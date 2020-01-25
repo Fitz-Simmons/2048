@@ -1,0 +1,66 @@
+@charset "UTF-8";
+* {
+    padding: 0;
+    margin: 0;
+}
+header {
+    display: block;
+    margin: 0 auto;
+    width: 500px;
+    text-align: center;
+}
+/* 选择器参考:https://www.w3school.com.cn/cssref/css_selectors.asp */
+/* 先加载header后再层叠加载header h1 */
+header h1 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 60px;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+header #newGameBtn {
+    width: 100px;
+    padding: 10px;
+    background: #8f7a66;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    border-radius: 10px;
+    text-decoration: none;
+}
+/* 这是一种选择器 选择鼠标指针浮动在其上的元素 并设置其样式:https://www.w3school.com.cn/cssref/selector_hover.asp */
+header #newGameBtn:hover {
+    background: #9f8b77;
+}
+header p {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 25px;
+    margin: 20px auto;
+}
+#gridContainer {
+    width: 460px;
+    height: 460px;
+    padding: 20px;
+    margin: 40px auto;
+    background: #bbada0;
+    border-radius: 10px;
+    position: relative;
+}
+.gridCell {
+    width: 100px;
+    height: 100px;
+    border-radius: 6px;
+    background: #ccc0b3;
+    position: absolute;
+}
+#gameOver {
+    background-color: black;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 60px;
+    position: absolute;
+    top: 45%;
+    left: 42%;
+    width: 250px;
+    text-align: center;
+    display: none;
+}
