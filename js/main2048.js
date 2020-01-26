@@ -91,3 +91,56 @@ function generateOneNumber() {
     showNumberWithAnimation(randx, randy, randNumber);
     return true;
 }
+
+//事件响应循环
+$(document).keydown(function (event) {
+    switch (event.keyCode) {
+        //left
+        case 37:
+            if (moveLeft()) {
+                getScore();
+                generateOneNumber();
+                //setTimeout("", 400);
+            }
+            break;
+    }
+})
+
+function moveLeft() {
+    //判断能否左移
+    if (!canMoveLeft(board)) return false;
+    //清空
+    resetAddedArray();
+    //移动
+    for (var i = 0; i < 4; i++) {
+        for (var j = 1; j < 4; j++) {
+            if (board[i][j] != 0) {
+                for (var k = 0; k < j; k++) {
+                    //落脚位置是否为空及中间无障碍物
+                    if (board[i][k] == 0 && noBlockHorizontal(i, k, j, board)) {
+                        showMoveAnimation(i, j, i, k);
+                        board[i][k] = board[i][j];
+                        board[i][j] = 0;
+                    }
+                    //落脚位置的数字和本来的数字相等及中间无障碍物
+                    else if (board[i][k] == board[i][j] && noBlockHorizontal(i, k, j, board)) {
+                        showMoveAnimation(i, j, i, k);
+                        if (added[i][k] != 0) {
+                            board[i][k + 1] = board[i][j];
+                            board[i][j] = 0;
+                        }
+                        else {
+                            board[i][k] += board[i][j];
+                            board[i][j] = 0;
+                            added[i][k] = 1;
+                            score += board[i][k];
+                        }
+                        continue;
+                    }
+                }
+            }
+        }
+    }
+    setTimeout("updateBoardView()", 200);
+    return true;
+}

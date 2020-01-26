@@ -62,6 +62,29 @@ function getScore() {
     document.getElementById("score").innerHTML = score;
 }
 
+function resetAddedArray() {
+    //将判断能否合并的数组重置为零
+    for (var i = 0; i < 4; i++) {
+        for (var j = 0; j < 4; j++) {
+            added[i][j] = 0;
+        }
+    }
+}
+
+function canMoveLeft() {
+    //判断能否左移
+    for (var i = 0; i < 4; i++) {
+        for (var j = 0; j < 4; j++) {
+            if (board[i][j] != 0 && j != 0) {
+                if (board[i][j - 1] == 0 || board[i][j - 1] == board[i][j]) {
+                    return true;
+                }
+            }
+        }
+    }
+    return false;
+}
+
 //在随机生成数字的时候判断16宫格中是否还有空间
 function nospace(board) {
     for (var i = 0; i < 4; i++) {
@@ -69,6 +92,26 @@ function nospace(board) {
             if (board[i][j] == 0) {
                 return false;
             }
+        }
+    }
+    return true;
+}
+
+//判断水平方向是否有障碍物
+function noBlockHorizontal(row, colA, colB, board) {
+    for (var i = colA + 1; i < colB; i++) {
+        if (board[row][i] != 0) {
+            return false;
+        }
+    }
+    return true;
+}
+
+//判断竖直方向是否有障碍物
+function noBlockVertical(col, rowA, rowB, board) {
+    for (var i = rowA + 1; i < rowB; i++) {
+        if (board[i][col] != 0) {
+            return false;
         }
     }
     return true;

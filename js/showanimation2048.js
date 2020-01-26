@@ -11,3 +11,9 @@ function showNumberWithAnimation(i, j, randNumber) {
         left: getPosLeft(i, j)
     }, 50);
 }
+
+function showMoveAnimation(fromx, fromy, tox, toy) {
+    //实现移动格子的样式变动
+    var numberCell = $('#numberCell-' + fromx + '-' + fromy);
+    numberCell.animate({top: getPosTop(tox, toy), left: getPosLeft(tox, toy)}, 200);
+}
