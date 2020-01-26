@@ -137,7 +137,7 @@ function isGameOver() {
 }
 
 function gameOver() {
-    $("#gameover").css('display', 'block');
+    $("#gameOver").css('display', 'block');
 }
 
 function moveLeft() {

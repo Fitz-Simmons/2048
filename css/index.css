@@ -7,6 +7,7 @@ header {
     display: block;
     margin: 0 auto;
     width: 500px;
+    height: 160px;
     text-align: center;
 }
 /* 选择器参考:https://www.w3school.com.cn/cssref/css_selectors.asp */
@@ -69,8 +70,10 @@ header p {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 60px;
     position: absolute;
-    top: 45%;
-    left: 42%;
+    border-radius: 6px;
+    top: 400px;
+    left: 50%;
+    margin-left: -125px;
     width: 250px;
     text-align: center;
     display: none;
