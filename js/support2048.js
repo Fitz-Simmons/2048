@@ -71,12 +71,54 @@ function resetAddedArray() {
     }
 }
 
-function canMoveLeft() {
+function canMoveLeft(board) {
     //判断能否左移
     for (var i = 0; i < 4; i++) {
         for (var j = 0; j < 4; j++) {
             if (board[i][j] != 0 && j != 0) {
                 if (board[i][j - 1] == 0 || board[i][j - 1] == board[i][j]) {
+                    return true;
+                }
+            }
+        }
+    }
+    return false;
+}
+
+function canMoveRight(board) {
+    //判断能否右移
+    for (var i = 0; i < 4; i++) {
+        for (var j = 0; j < 4; j++) {
+            if (board[i][j] != 0 && j != 3) {
+                if (board[i][j + 1] == 0 || board[i][j + 1] == board[i][j]) {
+                    return true;
+                }
+            }
+        }
+    }
+    return false;
+}
+
+function canMoveUp(board) {
+    //判断能否上移
+    for (var i = 0; i < 4; i++) {
+        for (var j = 0; j < 4; j++) {
+            if (board[i][j] != 0 && i != 0) {
+                if (board[i - 1][j] == 0 || board[i - 1][j] == board[i][j]) {
+                    return true;
+                }
+            }
+        }
+    }
+    return false;
+}
+
+function canMoveDown(board) {
+    //判断能否下移
+    for (var i = 0; i < 4; i++) {
+        for (var j = 0; j < 4; j++) {
+            if (board[i][j] != 0 && i != 3) {
+                if (board[i + 1][j] == 0 || board[i + 1][j] == board[i][j]) {
                     return true;
                 }
             }
@@ -114,5 +156,11 @@ function noBlockVertical(col, rowA, rowB, board) {
             return false;
         }
     }
+    return true;
+}
+
+function nomove(board) {
+    //判断还能否移动
+    if (canMoveLeft(board) || canMoveRight(board) || canMoveUp(board) || canMoveDown(board)) return false;
     return true;
 }
